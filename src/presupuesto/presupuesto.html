@@ -1,0 +1,136 @@
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sistema de Presupuesto - Santillana</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" ui-sref="salir">Salir</a></li>
+            <!-- <li><a href="#">Perfil</a></li>
+            <li><a href="#">Ayuda</a></li> -->
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Buscar...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+
+
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a ui-sref="dashboard" href="#">Inicio<span class="sr-only">(current)</span></a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a ui-sref="importar-ventas" href="#">Imp. de Ventas</a></li>
+                <li><a ui-sref="sincroniza-productos" href="#">Sincronizar Productos</a></li>
+              </ul>
+            </li>
+            <li class="active"><a ui-sref="presupuesto" href="#">Presupuesto<span class="sr-only"></span></a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PPTO vs Venta<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a ui-sref="ventas_ppto-consolidado" href="#">PPTO vs. Ventas <br />(Consolidado)</a></li>
+                <li><a ui-sref="ventas_ppto-zonas" href="#">PPTO vs. Ventas <br />(Ciudad)</a></li>
+                <li><a ui-sref="ventas_ppto-productos" href="#">PPTO vs. Ventas <br />(Producto)</a></li>
+                <li><a ui-sref="ventas_ppto-delegados" href="#">PPTO vs. Ventas <br />(Delegado)</a></li>
+                <li><a ui-sref="ventas_ppto-lineasnegocio" href="#">PPTO vs. Ventas <br />(Linea de Negocio)</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Revisión de Presupuesto (Por Ciudad)</h1>
+
+          <!-- <h2>Filtros</h2>
+
+          <form class="form-inline">
+              <select multiple class="form-control" size="6">
+                <option value="LAPAZ">La Paz</option>
+                <option value="CBBA">Cochabamba</option>
+                <option value="SCZ">Santa Cruz</option>
+                <option value="TARIJA">Tarija</option>
+                <option value="BENI">Beni</option>
+                <option value="ORURO">Oruro</option>
+              </select>
+
+              <select multiple class="form-control" size="6">
+                <option value="90015">Henry Espinoza Moscoso</option>
+                <option value="10013">Soledad Gonzalez</option>
+                <option value="90019">Cecilia Blanco</option>
+                <option value="90004_V">Henrry Cori Colque</option>
+                <option value="10035">Inayibe Sumi</option>
+                <option value="10029">Rosario Marlene Vaca Urgel</option>
+                <option value="10002">Nicolas Alberto Aldana Mena</option>
+                <option value="10032">David Villarroel Soliz</option>
+                <option value="90009">Luis Tapia</option>
+                <option value="90012_V">Carlos Donoso</option>
+                <option value="90020">Sergio Martinez</option>
+                <option value="10003">Ana Maria Navarro</option>
+                <option value="10008_V">Wilson Jhonny Chavez Molina</option>
+                <option value="10025">Daniel Humberto Serrano Padilla</option>
+                <option value="90014">Renato Campos</option>
+                <option value="90007_V">Elena Subirana Perez</option>
+                <option value="10033">Juan Carlos Arraya Mier</option>
+                <option value="90016">RUDDY MAMANI</option>
+                <option value="10036">VICTOR MONTERO</option>
+                <option value="90018">SIDNEY DUARTE</option>
+                <option value="90017">ARIEL ZAMBRANA</option>
+              </select>
+          </form> -->
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Ciudad</th>
+                  <th>Cantidad</th>
+                  <th>Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="zona in pptoZonas track by $index">
+                  <td>{{zona.Ciudad}}</td>
+                  <td>{{zona.Cantidad | number}}</td>
+                  <td>{{zona.Total | currency:"Bs."}}</td>
+                </tr>
+                <tr>
+                  <td><strong>TOTAL</strong></td>
+                  <td><strong>{{pptoTotalCantidad | number}}</strong></td>
+                  <td><strong>{{pptoTotalValor | currency:"Bs."}}</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-lg-6 col-sm-12 ng-scope" id="pie-chart">
+            <div class="panel panel-default">
+              <div class="panel-heading">Distribución de Presupuesto Nacional 2016 - 2017</div>
+              <div class="panel-body panel-fede">
+                <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas> 
+              </div>
+            </div>
+          </div>
+
+            
+          </div>
+
+        </div>
+
+        
+
+
+      </div>
+    </div>

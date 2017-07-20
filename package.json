@@ -1,0 +1,41 @@
+{
+  "name": "presupuesto-santillana",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devapp": "webpack-dev-server --progress --colors --port 8090",
+    "build": "webpack -p --config ./webpack.prod.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-chart.js": "^1.0.3",
+    "angular-google-chart": "^0.1.0",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap-sass": "^3.3.6",
+    "express": "^4.14.0",
+    "jquery": "^3.1.0",
+    "lodash": "^4.13.1"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "bootstrap-loader": "^1.0.10",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
+    "imports-loader": "^0.6.5",
+    "node-sass": "^3.8.0",
+    "raw-loader": "^0.5.1",
+    "resolve-url-loader": "^1.6.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

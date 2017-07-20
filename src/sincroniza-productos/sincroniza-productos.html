@@ -1,0 +1,70 @@
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sistema de Administración de Muestras - Santillana</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" ui-sref="salir">Salir</a></li>
+            <!-- <li><a href="#">Perfil</a></li>
+            <li><a href="#">Ayuda</a></li> -->
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Buscar...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+
+
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a ui-sref="dashboard" href="#">Inicio<span class="sr-only">(current)</span></a></li>
+            <li><a ui-sref="muestras-delegado" href="#" ng-if="privilegios.menu_muestras_delegado">Muestras a Delegados</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-if="privilegios.menu_entrega_colegio">Muestras a Colegio <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a ui-sref="muestras-colegio" href="#">Listado de Entregas</a></li>
+                <li><a ui-sref="muestras-colegio-cliente" href="#">Listado por Cliente</a></li>
+                <li><a ui-sref="crear-muestra-colegio" href="#" ng-if="privilegios.menu_crear_entrega_colegio">Crear Entrega</a></li>
+              </ul>
+            </li>
+            <li><a ui-sref="inventario" href="#" ng-if="privilegios.menu_inventario">Inventario</a></li>
+            <li><a href="#" ng-if="privilegios.menu_legalizaciones">Legalizaciones</a></li>
+            <li class="dropdown active">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-if="privilegios.menu_adm">Administración<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a ui-sref="importar-muestras-delegado" href="#" ng-if="privilegios.menu_adm_importacion_muestras">Imp. Muestras de Delegados</a></li>
+                <li><a ui-sref="sincroniza-productos" href="#" ng-if="privilegios.menu_adm_sincronizar_productos">Sincronizar Productos</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Sincronización de Productos</h1>
+          <button class="btn btn-danger btn-sm" ng-click="onSincronizaProductosClick()">Sincronizar Productos</button>
+
+          <div class="greenBox">
+            <div ng-repeat="item in items2" >
+              <div>{{item.texto}}</div>
+            </div>
+          </div>
+
+
+        </div>
+
+        
+
+
+      </div>
+    </div>
