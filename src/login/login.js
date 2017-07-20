@@ -1,8 +1,8 @@
 export default function ($rootScope, $scope, $http, $window, $state) {
 	$scope.loggedUser = [];
 
-	$scope.username = 'fpenaranda@santillana.com';
-	$scope.password = 'Stargate2016';
+	$scope.username = 'prueba';
+	$scope.password = '92j9fje29j982fz';
 
   	$scope.onLogin = function (username, password) {
     	$http.get('http://localhost:8090/login-santillana', {
